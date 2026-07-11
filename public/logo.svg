@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <text x="540" y="760" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="75" font-weight="400" fill="#3a3a3a" text-anchor="middle" letter-spacing="-1.5">Thorpe Innovation</text>
+  <g transform="translate(540, 420) scale(1.6)" stroke-width="26" stroke-linecap="round">
+    <line x1="10" y1="-30" x2="40" y2="-130" stroke="#b5c423" />
+    <line x1="40" y1="-5" x2="120" y2="5" stroke="#f4b31a" />
+    <line x1="25" y1="30" x2="80" y2="120" stroke="#c52185" />
+    <line x1="-10" y1="40" x2="-45" y2="110" stroke="#df5463" />
+    <line x1="-40" y1="15" x2="-130" y2="30" stroke="#17a0c5" />
+    <line x1="-30" y1="-15" x2="-80" y2="-75" stroke="#25a9a8" />
+  </g>
+</svg>
