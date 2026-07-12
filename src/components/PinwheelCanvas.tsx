@@ -63,7 +63,7 @@ export default function PinwheelCanvas() {
       length: 16 + Math.random() * 38,
       color: COLORS[Math.floor(Math.random() * 6)],
       opacity: 0,
-      targetOpacity: 0.05 + Math.random() * 0.17,
+      targetOpacity: 0.12 + Math.random() * 0.28,
       life: 0,
       maxLife: 380 + Math.random() * 480,
     });
@@ -140,21 +140,21 @@ export default function PinwheelCanvas() {
       ctx.save();
       ctx.translate(cw * 0.74, ch * 0.36);
       ctx.rotate(bigAngle);
-      drawPinwheel(baseScale, 0.052);
+      drawPinwheel(baseScale, 0.13);
       ctx.restore();
 
       // ─── Second smaller pinwheel (bottom-left area) ──────────────────────
       ctx.save();
       ctx.translate(cw * 0.12, ch * 0.72);
       ctx.rotate(-bigAngle * 1.5);
-      drawPinwheel(baseScale * 0.48, 0.038);
+      drawPinwheel(baseScale * 0.48, 0.10);
       ctx.restore();
 
       // ─── Third tiny pinwheel (center-bottom) ─────────────────────────────
       ctx.save();
       ctx.translate(cw * 0.55, ch * 0.88);
       ctx.rotate(bigAngle * 0.7);
-      drawPinwheel(baseScale * 0.28, 0.028);
+      drawPinwheel(baseScale * 0.28, 0.07);
       ctx.restore();
 
       // ─── Ambient floating particles ──────────────────────────────────────

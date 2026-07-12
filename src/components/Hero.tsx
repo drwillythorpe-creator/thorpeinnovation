@@ -16,7 +16,7 @@ export default function Hero() {
         style={{
           zIndex: 1,
           background:
-            "linear-gradient(105deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.75) 48%, rgba(255,255,255,0.15) 100%)",
+            "linear-gradient(105deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.52) 48%, rgba(255,255,255,0.05) 100%)",
         }}
       />
 
