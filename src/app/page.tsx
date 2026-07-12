@@ -9,6 +9,7 @@ import Differentials from "@/components/Differentials";
 import Cases from "@/components/Cases";
 import FeaturedCase from "@/components/FeaturedCase";
 import Leadership from "@/components/Leadership";
+import Team from "@/components/Team";
 import TechStack from "@/components/TechStack";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -28,6 +29,7 @@ export default function Home() {
         <Cases />
         <FeaturedCase />
         <Leadership />
+        <Team />
         <TechStack />
         <Contact />
       </main>
