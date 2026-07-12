@@ -18,20 +18,46 @@ const tags = [
   "CIn · UFPE",
   "Voxar Labs",
   "IA aplicada",
-  "Arquitetura de sistemas",
+  "Lançamento iOS",
+];
+
+const photos = [
+  {
+    src: "/team-hackathon.jpeg",
+    alt: "Time da Thorpe Innovation no Hackathon CIn · Voxar Labs — Porto Digital, Recife",
+    caption: "Hackathon · CIn · Voxar Labs",
+    sub: "Porto Digital · Recife, PE",
+    badge: "In Loco",
+    badgeColor: "#009FC0",
+  },
+  {
+    src: "/team-launch-breaking.jpeg",
+    alt: "Lançamento iAID — Thorpe Innovation no Porto Digital com balões e brinde comemorativo",
+    caption: "Lançamento iAID",
+    sub: "Breaking Paradigms, Innovating Systems",
+    badge: "Launch",
+    badgeColor: "#F8BC16",
+  },
+  {
+    src: "/team-launch-ios.jpeg",
+    alt: "Lançamento do app iOS iAID no Porto Digital — Nosso lema: pensar fora da caixa",
+    caption: "iOS App · iAID",
+    sub: "Pensar fora da caixa",
+    badge: "App Store",
+    badgeColor: "#B4C413",
+  },
 ];
 
 export default function Team() {
   const sectionRef = useRef(null);
-  const imageRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-80px" });
 
-  // Subtle parallax on the photo
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+  const mainY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const altY  = useTransform(scrollYProgress, [0, 1], ["3%", "-3%"]);
 
   return (
     <section
@@ -40,7 +66,7 @@ export default function Team() {
       className="relative overflow-hidden"
       style={{ backgroundColor: "#050D1A" }}
     >
-      {/* Top accent line */}
+      {/* Top accent */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
@@ -51,6 +77,7 @@ export default function Team() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+
         {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -71,13 +98,15 @@ export default function Team() {
           </span>
         </motion.div>
 
-        {/* Main grid */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — text */}
+        {/* Main grid: text left, gallery right */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+          {/* ── Left: text ─────────────────────────────────────────────── */}
           <motion.div
             initial={{ opacity: 0, x: -28 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.65, delay: 0.05 }}
+            className="lg:sticky lg:top-28"
           >
             <h2 className="text-4xl sm:text-5xl font-black tracking-tight leading-none mb-6">
               <span className="text-white">O time que </span>
@@ -94,11 +123,12 @@ export default function Team() {
               colaboração, prototipagem rápida e resolução real de problemas.
             </p>
             <p className="text-base leading-relaxed mb-8" style={{ color: "#9AA3B8" }}>
-              Esta foto é do{" "}
-              <strong style={{ color: "white" }}>Hackathon CIn · Voxar Labs</strong>,
-              onde o time esteve presente — debatendo arquitetura, IA e estratégia
-              de produto em tempo real, do jeito que a gente gosta: ao redor da mesa,
-              com código aberto e ideias na lousa.
+              Das sessões de hackathon com o{" "}
+              <strong style={{ color: "white" }}>CIn · UFPE e Voxar Labs</strong>{" "}
+              ao lançamento do{" "}
+              <strong style={{ color: "white" }}>iAID na App Store</strong> —
+              estas fotos mostram o time da forma que mais importa: com as mãos
+              na massa, ideias em debate e produto acontecendo.
             </p>
 
             {/* Tags */}
@@ -145,98 +175,101 @@ export default function Team() {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
 
-          {/* Right — photo with parallax */}
-          <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.65, delay: 0.1 }}
-            className="relative"
-          >
-            {/* Glow behind photo */}
-            <div
-              className="absolute -inset-4 rounded-3xl blur-2xl opacity-20"
-              style={{
-                background:
-                  "radial-gradient(ellipse at 60% 40%, #009FC0 0%, #1CA995 50%, transparent 80%)",
-              }}
-            />
-
-            {/* Photo frame */}
-            <div
-              ref={imageRef}
-              className="relative rounded-2xl overflow-hidden border"
-              style={{
-                borderColor: "rgba(0,159,192,0.18)",
-                boxShadow: "0 32px 80px rgba(0,0,0,0.6)",
-              }}
-            >
-              <motion.div style={{ y: imageY }} className="relative">
-                <Image
-                  src="/team-hackathon.jpeg"
-                  alt="Time da Thorpe Innovation no Hackathon CIn · Voxar Labs — Porto Digital, Recife"
-                  width={800}
-                  height={800}
-                  className="w-full h-auto object-cover"
-                  priority
-                />
-              </motion.div>
-
-              {/* Bottom overlay with caption */}
-              <div
-                className="absolute bottom-0 left-0 right-0 px-5 py-4"
-                style={{
-                  background:
-                    "linear-gradient(to top, rgba(5,13,26,0.95) 0%, rgba(5,13,26,0.5) 60%, transparent 100%)",
-                }}
-              >
-                <div className="flex items-end justify-between gap-3">
-                  <div>
-                    <p className="text-xs font-black tracking-widest uppercase mb-0.5" style={{ color: "#009FC0" }}>
-                      Hackathon · CIn · Voxar Labs
-                    </p>
-                    <p className="text-[11px]" style={{ color: "#6B7280" }}>
-                      Porto Digital · Recife, PE
-                    </p>
-                  </div>
-                  <span
-                    className="text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded flex-shrink-0"
-                    style={{
-                      color: "#B4C413",
-                      backgroundColor: "rgba(180,196,19,0.12)",
-                      border: "1px solid rgba(180,196,19,0.25)",
-                    }}
-                  >
-                    In Loco
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating quote card */}
+            {/* Quote */}
             <motion.div
-              className="absolute -bottom-6 -left-6 max-w-[220px] p-4 rounded-xl border backdrop-blur-sm hidden sm:block"
-              style={{
-                backgroundColor: "rgba(5,13,26,0.85)",
-                borderColor: "rgba(0,159,192,0.2)",
-              }}
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.55 }}
+              className="mt-10 pl-4 border-l-2"
+              style={{ borderColor: "rgba(0,159,192,0.35)" }}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.55 }}
             >
-              <p className="text-xs leading-relaxed italic" style={{ color: "#9AA3B8" }}>
+              <p className="text-sm italic leading-relaxed" style={{ color: "#6B7280" }}>
                 "Breaking Paradigms,<br />Innovating Systems."
               </p>
               <p className="text-[10px] font-bold mt-2 tracking-widest uppercase" style={{ color: "#009FC0" }}>
-                Thorpe Innovation
+                Thorpe Innovation · Porto Digital
               </p>
             </motion.div>
           </motion.div>
+
+          {/* ── Right: photo gallery ────────────────────────────────────── */}
+          <div className="flex flex-col gap-5">
+
+            {/* Photo 1 — Hackathon (large, parallax up) */}
+            <motion.div
+              initial={{ opacity: 0, y: 32 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.65, delay: 0.1 }}
+              className="relative"
+            >
+              <div
+                className="absolute -inset-3 rounded-2xl blur-xl opacity-15"
+                style={{ background: "radial-gradient(ellipse, #009FC0 0%, transparent 70%)" }}
+              />
+              <div
+                className="relative rounded-2xl overflow-hidden border"
+                style={{
+                  borderColor: "rgba(0,159,192,0.18)",
+                  boxShadow: "0 24px 60px rgba(0,0,0,0.55)",
+                }}
+              >
+                <motion.div style={{ y: mainY }}>
+                  <Image
+                    src={photos[0].src}
+                    alt={photos[0].alt}
+                    width={800}
+                    height={800}
+                    className="w-full h-auto object-cover"
+                    priority
+                  />
+                </motion.div>
+                <PhotoCaption photo={photos[0]} />
+              </div>
+            </motion.div>
+
+            {/* Photos 2 + 3 — side by side (parallax down) */}
+            <div className="grid grid-cols-2 gap-5">
+              {photos.slice(1).map((photo, i) => (
+                <motion.div
+                  key={photo.src}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.22 + i * 0.12 }}
+                  className="relative"
+                >
+                  <div
+                    className="absolute -inset-2 rounded-2xl blur-lg opacity-10"
+                    style={{
+                      background: `radial-gradient(ellipse, ${photo.badgeColor} 0%, transparent 70%)`,
+                    }}
+                  />
+                  <div
+                    className="relative rounded-xl overflow-hidden border"
+                    style={{
+                      borderColor: `${photo.badgeColor}28`,
+                      boxShadow: "0 16px 40px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    <motion.div style={{ y: altY }}>
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        width={400}
+                        height={400}
+                        className="w-full h-auto object-cover"
+                      />
+                    </motion.div>
+                    <PhotoCaption photo={photo} compact />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Bottom accent line */}
+      {/* Bottom accent */}
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
@@ -246,5 +279,55 @@ export default function Team() {
         }}
       />
     </section>
+  );
+}
+
+function PhotoCaption({
+  photo,
+  compact = false,
+}: {
+  photo: (typeof photos)[number];
+  compact?: boolean;
+}) {
+  return (
+    <div
+      className="absolute bottom-0 left-0 right-0"
+      style={{
+        padding: compact ? "10px 12px" : "16px 20px",
+        background:
+          "linear-gradient(to top, rgba(5,13,26,0.96) 0%, rgba(5,13,26,0.55) 60%, transparent 100%)",
+      }}
+    >
+      <div className="flex items-end justify-between gap-2">
+        <div>
+          <p
+            className="font-black tracking-widest uppercase leading-none"
+            style={{
+              fontSize: compact ? "9px" : "11px",
+              color: photo.badgeColor,
+            }}
+          >
+            {photo.caption}
+          </p>
+          {!compact && (
+            <p className="text-[10px] mt-0.5" style={{ color: "#6B7280" }}>
+              {photo.sub}
+            </p>
+          )}
+        </div>
+        <span
+          className="font-bold tracking-widest uppercase rounded flex-shrink-0"
+          style={{
+            fontSize: "9px",
+            padding: compact ? "2px 6px" : "3px 8px",
+            color: photo.badgeColor,
+            backgroundColor: `${photo.badgeColor}18`,
+            border: `1px solid ${photo.badgeColor}35`,
+          }}
+        >
+          {photo.badge}
+        </span>
+      </div>
+    </div>
   );
 }
