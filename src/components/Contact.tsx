@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MessageCircle, SendHorizonal, CheckCircle2, AlertCircle } from "lucide-react";
+import { Mail, SendHorizonal, CheckCircle2, AlertCircle } from "lucide-react";
 
 const schema = z.object({
   name: z.string().min(2, "Informe seu nome completo"),
@@ -20,12 +20,6 @@ const schema = z.object({
 });
 
 type FormData = z.infer<typeof schema>;
-
-const WHATSAPP_NUMBER = "5581986834320";
-const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Vim do Site da Thorpe Innovation e desejo iniciar o meu projeto tecnológico."
-);
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 export default function Contact() {
   const ref = useRef(null);
@@ -114,25 +108,6 @@ export default function Contact() {
                   <Mail className="w-5 h-5" style={{ color: "#009FC0" }} />
                 </div>
                 contato@thorpeinnovation.com
-              </a>
-
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm font-medium group"
-                style={{ color: "#1CA995" }}
-              >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center transition-opacity group-hover:opacity-80"
-                  style={{ backgroundColor: "rgba(28,169,149,0.1)" }}
-                >
-                  <MessageCircle
-                    className="w-5 h-5"
-                    style={{ color: "#1CA995" }}
-                  />
-                </div>
-                WhatsApp — fale agora
               </a>
             </div>
           </motion.div>
